@@ -19,6 +19,8 @@ $routes->get('/items/(:num)/edit', 'Item::edit/$1');
 $routes->post('/items/(:num)/update', 'Item::update/$1');
 $routes->post('/items/(:num)/delete', 'Item::delete/$1');
 
+service('auth')->routes($routes);
+
 $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], static function ($routes) {
     // Login/out
     $routes->get('login', 'AuthController::login', ['as' => 'login']);

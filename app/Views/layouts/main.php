@@ -7,8 +7,13 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        html, body {
+            height: 100%;
+        }
         body {
             background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
         }
         .navbar {
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -42,6 +47,9 @@
         main h2:first-child {
             margin-top: 0;
         }
+        .content-wrapper {
+            flex: 1;
+        }
         .service-card {
             border-left: 4px solid #667eea;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -59,7 +67,7 @@
             color: white;
             text-align: center;
             padding: 30px 0;
-            margin-top: 40px;
+            margin-top: auto;
         }
         footer p {
             margin: 5px 0;
@@ -113,6 +121,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('/contact') ?>">Contact</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="itemsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Items
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="itemsDropdown">
+                            <li><a class="dropdown-item" href="<?= base_url('/items') ?>">View Items</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('/items/create') ?>">Add New Item</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -128,10 +145,12 @@
     <?php endif; ?>
 
     <!-- Main Content -->
-    <div class="container my-5">
-        <main>
-            <?= $this->renderSection('content') ?>
-        </main>
+    <div class="content-wrapper">
+        <div class="container my-5">
+            <main>
+                <?= $this->renderSection('content') ?>
+            </main>
+        </div>
     </div>
 
     <!-- Footer -->
